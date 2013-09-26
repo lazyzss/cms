@@ -10,14 +10,14 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-	<!--  		classpath*:/applicationContext.xml,
-			classpath*:/applicationContext-shiro.xml -->
+	 		classpath*:/applicationContext.xml,
+		<!-- 	classpath*:/applicationContext-shiro.xml -->
 		</param-value>
 	</context-param>
 	<context-param>
 		<!-- production或者development 方便开发者在本地开发,或者发布到服务器 -->
 		<param-name>spring.profiles.default</param-name>
-		<param-value>production</param-value>
+		<param-value>development</param-value>
 	</context-param>
 
 	<listener>
