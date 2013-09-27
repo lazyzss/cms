@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
-	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
@@ -13,7 +16,15 @@
 	default-lazy-init="true">
 
 	<description>Spring公共配置 </description>
-
+	
+	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+	<context:component-scan base-package="cn.daryu.cms">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+	
 	<!-- Jpa Entity Manager 配置 -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -36,6 +47,24 @@
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 	</bean>
+	
+	<!-- Jpa 事务配置 -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+
+	<!-- Spring Data Jpa配置 -->
+	<jpa:repositories base-package="cn.daryu.cms"
+		transaction-manager-ref="transactionManager"
+		entity-manager-factory-ref="entityManagerFactory" />
+
+	<!-- JSR303 Validator定义 -->
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 	
 	<beans profile="development">
 		<!-- 开发环境下 读取开发时配置文件-->
