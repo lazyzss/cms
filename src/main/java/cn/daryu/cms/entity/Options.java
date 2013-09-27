@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 博客全局配置变量表
+ * CMS全局配置变量表
  * 
  * @author Day
  *

@@ -3,25 +3,13 @@
 
 	<diskStore path="java.io.tmpdir/daryu/cms" />
 
-	<!-- DefaultCache setting. -->
-
+	<!-- 默认缓冲设置 DefaultCache setting. -->
 	<defaultCache maxEntriesLocalHeap="10000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="600"
 		overflowToDisk="true" maxEntriesLocalDisk="100000" />
 
-	<!-- Special objects setting. -->
+	<!-- 如有必要多特殊的表进行设置 Special objects setting. -->
 	<!-- 
-	<cache name="org.wlng.gjcs.entity.Stop" maxEntriesLocalHeap="10000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="1440"
+	<cache name="cn.daryu.cms.entity.xxx" maxEntriesLocalHeap="10000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="1440"
 		overflowToDisk="true" maxEntriesLocalDisk="20000" />
-	<cache name="org.wlng.gjcs.entity.LineStop" maxEntriesLocalHeap="25000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="1440"
-		overflowToDisk="true" maxEntriesLocalDisk="30000" />
-	<cache name="org.wlng.gjcs.entity.Line" maxEntriesLocalHeap="1000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="1440"
-		overflowToDisk="true" maxEntriesLocalDisk="1000" />
-	<cache name="org.wlng.gjcs.entity.LineBus" maxEntriesLocalHeap="11000" eternal="false" timeToIdleSeconds="60" timeToLiveSeconds="120"
-		overflowToDisk="true" maxEntriesLocalDisk="11000" />
-	<cache name="org.wlng.gjcs.entity.Bus" maxEntriesLocalHeap="12000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="1440"
-		overflowToDisk="true" maxEntriesLocalDisk="12000" />
- -->
-	<!-- 有18万条，缓冲一部分 -->
-<!-- 	<cache name="org.wlng.gjcs.entity.LineTrails" maxEntriesLocalHeap="60000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="1440"
-		overflowToDisk="true" maxEntriesLocalDisk="130000" />  -->
+ 	-->
 </ehcache>
