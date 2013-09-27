@@ -2,6 +2,8 @@ package cn.daryu.cms.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -22,7 +24,8 @@ public class Options {
 	private String autoload;
 	
 	@Id
-	@Column(name = "option_id", columnDefinition="id号") 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "option_id", columnDefinition="BIGINT(20)") 
 	public Long getId() {
 		return id;
 	}
@@ -30,7 +33,7 @@ public class Options {
 		this.id = id;
 	}
 	
-	@Column(name = "blog_id",columnDefinition="博客ID，用于多用户博客，默认0") 
+	@Column(name = "blog_id",columnDefinition="BIGINT(20)") 
 	public Long getBlogId() {
 		return blogId;
 	}
@@ -38,7 +41,7 @@ public class Options {
 		this.blogId = blogId;
 	}
 	
-	@Column(name = "option_name",columnDefinition="键名") 
+	@Column(name = "option_name",nullable=false,length=255,columnDefinition="VARCHAR") 
 	public String getOptionName() {
 		return optionName;
 	}
@@ -46,7 +49,7 @@ public class Options {
 		this.optionName = optionName;
 	}
 	
-	@Column(name = "option_value",columnDefinition="键值") 
+	@Column(name = "option_value",columnDefinition="LONGTEXT") 
 	public String getOptionValue() {
 		return optionValue;
 	}
@@ -54,7 +57,7 @@ public class Options {
 		this.optionValue = optionValue;
 	}
 	
-	@Column(name = "autoload",columnDefinition="在CMS载入时自动载入yes/no") 
+	@Column(name = "autoload",nullable=false,length=20,columnDefinition="VARCHAR") 
 	public String getAutoload() {
 		return autoload;
 	}
