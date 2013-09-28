@@ -5,7 +5,7 @@ import org.springframework.data.repository.Repository;
 
 import cn.daryu.cms.entity.Options;
 
-public interface OptionsDao extends Repository<OptionsDao, Long>{
+public interface OptionsDao extends Repository<Options, Long>{
 
 	public Options save(Options options); 
 

@@ -33,11 +33,12 @@
 		<property name="packagesToScan" value="cn.daryu.cms" />
 		<property name="jpaProperties">
 			<props>
+				<prop key="hibernate.hbm2ddl.auto">update</prop> 
 				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
 				<prop key="net.sf.ehcache.configurationResourceName">/ehcache/ehcache-hibernate-local.xml</prop>
 				<!-- 命名规则 My_NAME->MyName -->
 				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
 	</bean>
@@ -63,9 +64,9 @@
 		entity-manager-factory-ref="entityManagerFactory" />
 
 	<!-- JSR303 Validator定义 -->
-	<bean id="validator"
+<!-- 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-	
+ -->	
 	<beans profile="development">
 		<!-- 开发环境下 读取开发时配置文件-->
 		<context:property-placeholder

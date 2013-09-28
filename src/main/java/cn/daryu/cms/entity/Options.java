@@ -25,7 +25,7 @@ public class Options {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "option_id", columnDefinition="BIGINT(20)") 
+	@Column(name = "option_id") 
 	public Long getId() {
 		return id;
 	}
@@ -33,7 +33,7 @@ public class Options {
 		this.id = id;
 	}
 	
-	@Column(name = "blog_id",columnDefinition="BIGINT(20)") 
+	@Column(name = "blog_id") 
 	public Long getBlogId() {
 		return blogId;
 	}
@@ -41,7 +41,7 @@ public class Options {
 		this.blogId = blogId;
 	}
 	
-	@Column(name = "option_name",nullable=false,length=255,columnDefinition="VARCHAR") 
+	@Column(name = "option_name") 
 	public String getOptionName() {
 		return optionName;
 	}
@@ -49,7 +49,7 @@ public class Options {
 		this.optionName = optionName;
 	}
 	
-	@Column(name = "option_value",columnDefinition="LONGTEXT") 
+	@Column(name = "option_value") 
 	public String getOptionValue() {
 		return optionValue;
 	}
@@ -57,7 +57,7 @@ public class Options {
 		this.optionValue = optionValue;
 	}
 	
-	@Column(name = "autoload",nullable=false,length=20,columnDefinition="VARCHAR") 
+	@Column(name = "autoload") 
 	public String getAutoload() {
 		return autoload;
 	}
