@@ -1,15 +1,12 @@
 package cn.daryu.cms.repository;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import cn.daryu.cms.entity.Options;
 
-public interface OptionsDao extends Repository<Options, Long>{
+public interface OptionsDao extends CrudRepository<Options, Long>{
 
-	public Options save(Options options); 
-
-	
 	/**
 	 * 根据名称与id号查询值
 	 * 

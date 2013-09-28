@@ -3,6 +3,7 @@ package cn.daryu.cms.repository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,7 +21,7 @@ import cn.daryu.cms.entity.Options;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles(profiles = "development")
 @ContextConfiguration(locations = { "/applicationContext.xml" })
-@TransactionConfiguration(transactionManager = "transactionManager")
+@TransactionConfiguration(transactionManager = "transactionManager",defaultRollback = true)
 @Transactional
 public class OptionsDaoTest {
 

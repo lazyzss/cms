@@ -64,9 +64,9 @@
 		entity-manager-factory-ref="entityManagerFactory" />
 
 	<!-- JSR303 Validator定义 -->
-<!-- 	<bean id="validator"
+ 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
- -->	
+	
 	<beans profile="development">
 		<!-- 开发环境下 读取开发时配置文件-->
 		<context:property-placeholder
