@@ -5,6 +5,12 @@ import org.springframework.data.repository.CrudRepository;
 
 import cn.daryu.cms.entity.Options;
 
+/**
+ * 与Options实例有关的dao
+ * 
+ * @author Day
+ *
+ */
 public interface OptionsDao extends CrudRepository<Options, Long>{
 
 	/**
