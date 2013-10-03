@@ -25,7 +25,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicInsert
 @Table(name = "cms_options", uniqueConstraints = { @UniqueConstraint(columnNames = {
 		"blog_id", "option_name" },name="option_blog_id_name") })
-public class Options {
+public class Option {
 
 	private Long id;
 	
@@ -52,8 +52,7 @@ public class Options {
 		this.id = id;
 	}
 
-	@Column(name = "blog_id",columnDefinition = "bigint(20) DEFAULT 0", nullable = false)
-	
+	@Column(name = "blog_id",columnDefinition = "bigint(20) DEFAULT '0'", nullable = false)
 	public Long getBlogId() {
 		return blogId;
 	}

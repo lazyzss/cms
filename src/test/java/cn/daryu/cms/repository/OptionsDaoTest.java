@@ -16,8 +16,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.daryu.cms.entity.Options;
-import cn.daryu.cms.entity.Options.OptionsAutoload;
+import cn.daryu.cms.entity.Option;
+import cn.daryu.cms.entity.Option.OptionsAutoload;
 
 /**
  * OptionsDao的测试用例
@@ -33,7 +33,7 @@ import cn.daryu.cms.entity.Options.OptionsAutoload;
 public class OptionsDaoTest {
 
 	@Autowired
-	private OptionsDao optionsDao;
+	private OptionDao optionsDao;
 
 	@Before
 	public void setUp() {
@@ -41,21 +41,21 @@ public class OptionsDaoTest {
 		optionsDao.deleteAll();
 		//插入基本测试数据
 		
-		Options opTest2 = new Options();
+		Option opTest2 = new Option();
 		opTest2.setBlogId(1L);
 		opTest2.setOptionName("测试");
 		opTest2.setAutoload(OptionsAutoload.YES);
 		opTest2.setOptionValue("测试数据2");
 		optionsDao.save(opTest2);
 		
-		Options opTest1 = new Options();
+		Option opTest1 = new Option();
 		opTest1.setBlogId(0L);
 		opTest1.setOptionName("测试");
 		opTest1.setAutoload(OptionsAutoload.YES);
 		opTest1.setOptionValue("测试数据1");
 		optionsDao.save(opTest1);
 		
-		Options opTest3 = new Options();
+		Option opTest3 = new Option();
 		opTest3.setBlogId(0L);
 		opTest3.setOptionName("测试3");
 		opTest3.setAutoload(OptionsAutoload.NO);
@@ -73,7 +73,7 @@ public class OptionsDaoTest {
 	@Transactional
 	public void testSave() {
 
-		Options op1 = new Options();
+		Option op1 = new Option();
 		op1.setBlogId(0L);
 		op1.setAutoload(OptionsAutoload.YES);
 		op1.setOptionName("test");
@@ -89,14 +89,14 @@ public class OptionsDaoTest {
 	@Transactional
 	public void testUnique1() {
 		//看看能否检测到冲突		
-		Options op1 = new Options();
+		Option op1 = new Option();
 		op1.setBlogId(0L);
 		op1.setAutoload(OptionsAutoload.YES);
 		op1.setOptionName("test");
 		op1.setOptionValue("111111");
 		optionsDao.save(op1);
 		
-		Options op2 = new Options();
+		Option op2 = new Option();
 		op2.setBlogId(0L);
 		op2.setAutoload(OptionsAutoload.NO);
 		op2.setOptionName("test");
@@ -112,21 +112,21 @@ public class OptionsDaoTest {
 	@Transactional
 	public void testUnique2() {
 		//看看能否检测到冲突		
-		Options op1 = new Options();
+		Option op1 = new Option();
 		op1.setBlogId(0L);
 		op1.setAutoload(OptionsAutoload.YES);
 		op1.setOptionName("test");
 		op1.setOptionValue("111111");
 		optionsDao.save(op1);
 		//BlogId不一样
-		Options op2 = new Options();
+		Option op2 = new Option();
 		op2.setBlogId(1L);
 		op2.setAutoload(OptionsAutoload.NO);
 		op2.setOptionName("test");
 		op2.setOptionValue("111111222");
 		optionsDao.save(op2);
 		//name不一样
-		Options op3 = new Options();
+		Option op3 = new Option();
 		op3.setBlogId(1L);
 		op3.setAutoload(OptionsAutoload.NO);
 		op3.setOptionName("test2");
@@ -141,7 +141,7 @@ public class OptionsDaoTest {
 	@Test
 	public void testFindByOptionName() {
 		//看看能否检测到冲突		
-		Options op1 = optionsDao.findByOptionName("测试");
+		Option op1 = optionsDao.findByOptionName("测试");
 		assertTrue("按名字查询不到应该有的结构", op1.getOptionValue().equals("测试数据1"));
 	}
 }
