@@ -1,6 +1,6 @@
 package cn.daryu.cms.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import cn.daryu.cms.entity.User;
 
@@ -10,7 +10,7 @@ import cn.daryu.cms.entity.User;
  * @author Day
  *
  */
-public interface UserDao extends CrudRepository<User, Long>{
+public interface UserDao extends PagingAndSortingRepository<User, Long>{
 
 
 }
