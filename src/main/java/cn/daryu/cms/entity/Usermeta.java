@@ -33,7 +33,7 @@ public class Usermeta {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "umeta_id", nullable = false)
+	@Column(name = "umeta_id", columnDefinition = "bigint(20) unsigned", nullable = false)
 	public Long getId() {
 		return id;
 	}
@@ -44,7 +44,7 @@ public class Usermeta {
 
 	@Index(name = "user_id")
 	@ManyToOne
-	@JoinColumn(name = "user_id",columnDefinition = "bigint(20) DEFAULT '0'", nullable = false)
+	@JoinColumn(name = "user_id",columnDefinition = "bigint(20) unsigned DEFAULT '0'", nullable = false)
 	public User getUser() {
 		return user;
 	}

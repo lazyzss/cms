@@ -43,7 +43,7 @@ public class Option {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "option_id", nullable = false)
+	@Column(name = "option_id", columnDefinition = "bigint(20) unsigned", nullable = false)
 	public Long getId() {
 		return id;
 	}
@@ -52,7 +52,7 @@ public class Option {
 		this.id = id;
 	}
 
-	@Column(name = "blog_id",columnDefinition = "bigint(20) DEFAULT '0'", nullable = false)
+	@Column(name = "blog_id",columnDefinition = "bigint(20) unsigned DEFAULT '0'", nullable = false)
 	public Long getBlogId() {
 		return blogId;
 	}
