@@ -1,12 +1,16 @@
 package cn.daryu.cms.entity;
 
 import java.util.Date;
+import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapKey;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -34,6 +38,8 @@ public class User {
 	private String userActivationKey; //用户激活码,一般不怎么用
 	private Long userStatus;
 	private Date userRegistered;
+	//附加表的映射MAP
+	private Map<String, Usermeta> usermetas;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -109,6 +115,16 @@ public class User {
 
 	public void setUserRegistered(Date userRegistered) {
 		this.userRegistered = userRegistered;
+	}
+
+	@OneToMany(targetEntity = Usermeta.class, cascade = CascadeType.ALL,mappedBy = "user")
+	@MapKey(name = "metaKey")
+	public Map<String, Usermeta> getUsermetas() {
+		return usermetas;
+	}
+
+	public void setUsermetas(Map<String, Usermeta> usermetas) {
+		this.usermetas = usermetas;
 	}
 
 }

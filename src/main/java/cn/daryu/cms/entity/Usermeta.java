@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -25,7 +27,7 @@ import org.hibernate.annotations.Index;
 public class Usermeta {
 
 	private Long id;
-	private Long userId;
+	private User user;
 	private String metaKey;
 	private String metaValue;
 	
@@ -39,15 +41,16 @@ public class Usermeta {
 	public void setId(Long id) {
 		this.id = id;
 	}	
-	
+
 	@Index(name = "user_id")
-	@Column(name = "user_id",columnDefinition = "bigint(20) DEFAULT '0'", nullable = false)
-	public Long getUserId() {
-		return userId;
+	@ManyToOne
+	@JoinColumn(name = "user_id",columnDefinition = "bigint(20) DEFAULT '0'", nullable = false)
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Index(name = "meta_key")
