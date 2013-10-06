@@ -33,6 +33,7 @@ public class Options {
 	 * 默认值设置成 0
 	 */
 	private Long blogId = 0L;;
+	
 	private String optionName;
 	private String optionValue;
 	
@@ -52,8 +53,7 @@ public class Options {
 		this.id = id;
 	}
 
-	@Column(name = "blog_id",columnDefinition = "bigint(20) DEFAULT 0", nullable = false)
-	
+	@Column(name = "blog_id",columnDefinition = "bigint(20) DEFAULT 0", nullable = false)	
 	public Long getBlogId() {
 		return blogId;
 	}
