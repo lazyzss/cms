@@ -25,7 +25,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicInsert
 @Table(name = "cms_options", uniqueConstraints = { @UniqueConstraint(columnNames = {
 		"blog_id", "option_name" },name="option_blog_id_name") })
-public class Options {
+public class Option {
 
 	private Long id;
 	
@@ -33,7 +33,6 @@ public class Options {
 	 * 默认值设置成 0
 	 */
 	private Long blogId = 0L;;
-	
 	private String optionName;
 	private String optionValue;
 	
@@ -44,7 +43,7 @@ public class Options {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "option_id", nullable = false)
+	@Column(name = "option_id", columnDefinition = "bigint(20) unsigned", nullable = false)
 	public Long getId() {
 		return id;
 	}
@@ -53,7 +52,7 @@ public class Options {
 		this.id = id;
 	}
 
-	@Column(name = "blog_id",columnDefinition = "bigint(20) DEFAULT 0", nullable = false)	
+	@Column(name = "blog_id",columnDefinition = "bigint(20) unsigned DEFAULT '0'", nullable = false)
 	public Long getBlogId() {
 		return blogId;
 	}
