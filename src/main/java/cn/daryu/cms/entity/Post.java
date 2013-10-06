@@ -20,8 +20,8 @@ import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "cms_postmeta")
-public class Postmeta {
+@Table(name = "cms_post")
+public class Post {
 
 	private Long id;
 ////	private Post post;
