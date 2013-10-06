@@ -1,7 +1,9 @@
 package cn.daryu.cms.entity;
 
 import java.util.Date;
+import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKey;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -41,6 +45,8 @@ public class Comment {
 	private String commentAgent; //每个评论的评论者的客户端信息，主要包括其浏览器和操作系统的类型、版本等资料。
 	private CommentType commentType = CommentType.COMMENT; //评论类型，默认是普通评论
 	private Comment commentParent; //父评论	
+	//附加数据集
+	private Map<String, Commentmeta> commentmetas;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -130,6 +136,15 @@ public class Comment {
 		this.commentParent = commentParent;
 	}
 	
+	@OneToMany(targetEntity = Commentmeta.class, cascade = CascadeType.ALL,mappedBy = "comment")
+	@MapKey(name = "metaKey")
+	public Map<String, Commentmeta> getCommentmetas() {
+		return commentmetas;
+	}
+	public void setCommentmetas(Map<String, Commentmeta> commentmetas) {
+		this.commentmetas = commentmetas;
+	}
+
 	/*
 	 * Comment中的评论类型的枚举类。
 	 *
