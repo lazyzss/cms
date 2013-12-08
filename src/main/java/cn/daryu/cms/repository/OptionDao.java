@@ -28,7 +28,7 @@ public interface OptionDao extends CrudRepository<Option, Long>{
 	 * @param name
 	 * @return
 	 */
-	@Query("select op from Options op where op.optionName = ?1 and op.blogId = 0")
+	@Query("select op from Option op where op.optionName = ?1 and op.blogId = 0")
 	public Option findByOptionName(String name);
 	
 }
